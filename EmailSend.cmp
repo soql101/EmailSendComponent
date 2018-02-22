@@ -1,0 +1,29 @@
+<aura:component controller="EmailSendCtrl" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="salutationOptions" type="List" default="[
+        {'label': 'None', 'value': 'None'},
+        {'label': 'Mr.', 'value': 'Mr.'},
+        {'label': 'Ms.', 'value': 'Ms.'},
+        {'label': 'Mrs.', 'value': 'Mrs.'},
+        {'label': 'Dr.', 'value': 'Dr.'},
+        {'label': 'Prof.', 'value': 'Prof.'},
+    ]"/>
+    <aura:attribute name="fields" type="List" default="['firstName', 'lastName']"/>
+    <div class="slds-card">
+    <div class="slds-size_1-of-2">
+        <lightning:inputName aura:id="myname"
+            label="Contact Name"
+            firstName="James"
+            middleName="William"
+            lastName="Bond"
+            informalName="JB"
+            suffix="The 3rd"
+            salutation="Mr."
+            options="{!v.salutationOptions}"
+            fieldsToDisplay="{!v.fields}"
+        />
+     </div>
+    <lightning:input type="email" label="Email" name="email" value="" aura:id="emailInput" />
+
+        <lightning:button variant="brand" label="Submit" onclick="{! c.handleClick }" />
+        </div>
+</aura:component>
